@@ -80,8 +80,8 @@ class PlgPaymentTrangellZarinpal extends JPlugin
 		
 
 		try {
-			//  $client = new SoapClient('https://www.zarinpal.com/pg/services/WebGate/wsdl', ['encoding' => 'UTF-8']); 	
-			$client = new SoapClient('https://sandbox.zarinpal.com/pg/services/WebGate/wsdl', ['encoding' => 'UTF-8']); // for local
+			  $client = new SoapClient('https://www.zarinpal.com/pg/services/WebGate/wsdl', ['encoding' => 'UTF-8']); 	
+			//$client = new SoapClient('https://sandbox.zarinpal.com/pg/services/WebGate/wsdl', ['encoding' => 'UTF-8']); // for local
 
 			$result = $client->PaymentRequest(
 				[
@@ -98,8 +98,7 @@ class PlgPaymentTrangellZarinpal extends JPlugin
 			if ($resultStatus == 100) {
 			
 			// Header('Location: https://www.zarinpal.com/pg/StartPay/'.$result->Authority); 
-				$vars->action_url = 'https://sandbox.zarinpal.com/pg/StartPay/'.$result->Authority;
-				// $vars->pay_method = $this->params->get('pay_method', 'cc');
+				$vars->action_url = 'https://www.zarinpal.com/pg/StartPay/'.$result->Authority;
 				$html = $this->buildLayout($vars);
 
 				return $html;
@@ -126,8 +125,8 @@ class PlgPaymentTrangellZarinpal extends JPlugin
 			if (checkHack::checkString($status)){
 				if ($status == 'OK') {
 					try {
-						// $client = new SoapClient('https://www.zarinpal.com/pg/services/WebGate/wsdl', ['encoding' => 'UTF-8']); 
-						$client = new SoapClient('https://sandbox.zarinpal.com/pg/services/WebGate/wsdl', ['encoding' => 'UTF-8']); // for local
+						 $client = new SoapClient('https://www.zarinpal.com/pg/services/WebGate/wsdl', ['encoding' => 'UTF-8']); 
+						//$client = new SoapClient('https://sandbox.zarinpal.com/pg/services/WebGate/wsdl', ['encoding' => 'UTF-8']); // for local
 
 						$result = $client->PaymentVerification(
 							[
