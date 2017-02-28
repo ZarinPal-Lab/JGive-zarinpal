@@ -104,13 +104,13 @@ class PlgPaymentTrangellZarinpal extends JPlugin
 
 				return $html;
 			} else {
-				$msg= $this->getGateMsg('error'); 
+				$msg= plgPaymentTrangellZarinpalHelper::getGateMsg('error'); 
 				$link = JRoute::_(JUri::root().	'index.php?option=com_jgive&task=donations.cancel&processor=trangellzarinpal&order_id='.$vars->order_id,false);
 				$app->redirect($link, '<h2>'.$msg.'  خطای: '.$resultStatus.'</h2>', $msgType='Error'); 
 			}
 		}
 		catch(\SoapFault $e) {
-			$msg= $this->getGateMsg('error'); 
+			$msg= plgPaymentTrangellZarinpalHelper::getGateMsg('error'); 
 			$link = JRoute::_(JUri::root().	'index.php?option=com_jgive&task=donations.cancel&processor=trangellzarinpal&order_id='.$vars->order_id,false);
 			$app->redirect($link, '<h2>'.$msg.'</h2>', $msgType='Error'); 
 		}
