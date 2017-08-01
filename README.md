@@ -1,4 +1,4 @@
-<p># پلاگین اتصال زرین پال به JGive</p>
+# پلاگین اتصال زرین پال به JGive
 <p> </p>
 <p style="text-align: center;"><a title="تیم برنامه نویسی و توسعه ترانگل" href="https://trangell.com/fa/" rel="alternate"><img src="https://trangell.com/images/header-blogo.png" alt="تیم برنامه نویسی و توسعه ترانگل" width="336" height="280" /><br /></a></p>
 <p dir="rtl" style="text-align: right;">شما به وسیله این پلاگین می توانید کامپوننت  JGive را به درگاه پرداخت زرین پال متصل کنید . و پرداخت های خودتان را به راحتی انجام دهید .</p>
