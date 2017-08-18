@@ -98,7 +98,12 @@ class PlgPaymentTrangellZarinpal extends JPlugin
 			if ($resultStatus == 100) {
 			
 			// Header('Location: https://www.zarinpal.com/pg/StartPay/'.$result->Authority); 
-				$vars->action_url = 'https://www.zarinpal.com/pg/StartPay/'.$result->Authority;
+				if ($this->params->get('zaringate', '') == 0){
+					$vars->action_url = 'https://www.zarinpal.com/pg/StartPay/'.$result->Authority;
+				}
+				else {
+					$vars->action_url = 'https://www.zarinpal.com/pg/StartPay/'.$result->Authority.'/ZarinGate';
+				}
 				$html = $this->buildLayout($vars);
 
 				return $html;
@@ -125,7 +130,7 @@ class PlgPaymentTrangellZarinpal extends JPlugin
 			if (checkHack::checkString($status)){
 				if ($status == 'OK') {
 					try {
-						 $client = new SoapClient('https://www.zarinpal.com/pg/services/WebGate/wsdl', ['encoding' => 'UTF-8']); 
+						$client = new SoapClient('https://www.zarinpal.com/pg/services/WebGate/wsdl', ['encoding' => 'UTF-8']); 
 						//$client = new SoapClient('https://sandbox.zarinpal.com/pg/services/WebGate/wsdl', ['encoding' => 'UTF-8']); // for local
 
 						$result = $client->PaymentVerification(
