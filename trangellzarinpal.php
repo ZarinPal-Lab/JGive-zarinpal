@@ -125,11 +125,21 @@ class PlgPaymentTrangellZarinpal extends JPlugin
 					//$vars->action_url = 'https://www.zarinpal.com/pg/StartPay/'.$result->Authority;
 				//}
 				//else {
-					$vars->action_url = 'https://www.zarinpal.com/pg/StartPay/'.$result['data']["authority"];
+				//	$vars->action_url = 'https://www.zarinpal.com/pg/StartPay/'.$result['data']["authority"];
 				//}
-				$html = $this->buildLayout($vars);
+				//$html = $this->buildLayout($vars);
 
-				return $html;
+				//return $html;
+                echo'<html><body>
+<script type="text/javascript" src="https://cdn.zarinpal.com/zarinak/v1/checkout.js"></script>
+<script type="text/javascript">
+window.onload = function () {
+Zarinak.setAuthority("' . $result['data']['authority'] . '");
+Zarinak.showQR();
+Zarinak.open();
+};
+</script>
+</body></html>';
 			} else {
 				$msg= plgPaymentTrangellZarinpalHelper::getGateMsg('error'); 
 				$link = JRoute::_(JUri::root().	'index.php?option=com_jgive&task=donations.cancel&processor=trangellzarinpal&order_id='.$vars->order_id,false);
